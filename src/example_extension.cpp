@@ -28,12 +28,13 @@ inline void ExampleOpenSSLVersionScalarFun(DataChunk &args, ExpressionState &sta
 
 static void LoadInternal(ExtensionLoader &loader) {
 	// Register a scalar function
-	auto example_scalar_function = ScalarFunction("example", {LogicalType::VARCHAR}, LogicalType::VARCHAR, ExampleScalarFun);
+	auto example_scalar_function =
+	    ScalarFunction("example", {LogicalType::VARCHAR}, LogicalType::VARCHAR, ExampleScalarFun);
 	loader.RegisterFunction(example_scalar_function);
 
 	// Register another scalar function
 	auto example_openssl_version_scalar_function = ScalarFunction("example_openssl_version", {LogicalType::VARCHAR},
-	                                                            LogicalType::VARCHAR, ExampleOpenSSLVersionScalarFun);
+	                                                              LogicalType::VARCHAR, ExampleOpenSSLVersionScalarFun);
 	loader.RegisterFunction(example_openssl_version_scalar_function);
 }
 
