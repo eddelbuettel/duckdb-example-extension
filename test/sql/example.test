@@ -1,0 +1,23 @@
+# name: test/sql/example.test
+# description: test example extension
+# group: [sql]
+
+# Before we load the extension, this will fail
+statement error
+SELECT example('Sam');
+----
+Catalog Error: Scalar Function with name example does not exist!
+
+# Require statement will ensure this test is run with this extension loaded
+require example
+
+# Confirm the extension works
+query I
+SELECT example('Sam');
+----
+Example Sam 🐥
+
+query I
+SELECT example_openssl_version('Michael') ILIKE 'Example Michael, my linked OpenSSL version is OpenSSL%';
+----
+true
