@@ -39,7 +39,8 @@ static void LoadInternal(ExtensionLoader &loader) {
 	loader.RegisterFunction(example_openssl_version_scalar_function);
 
 	// Register sample table function returning a table (and consuming a scalar (or two, commented out)
-	auto example_table_function = TableFunction("example_table_function", {LogicalType::INTEGER}, ExampleTableFunction, ExampleTableBindFunction);
+	auto example_table_function =
+	    TableFunction("example_table_function", {LogicalType::INTEGER}, ExampleTableFunction, ExampleTableBindFunction);
 	loader.RegisterFunction(example_table_function);
 }
 

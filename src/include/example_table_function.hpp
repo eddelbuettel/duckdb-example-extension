@@ -18,7 +18,7 @@ struct ExampleTableData : public TableFunctionData {
 };
 
 unique_ptr<FunctionData> ExampleTableBindFunction(ClientContext &context, TableFunctionBindInput &input,
-												  vector<LogicalType> &return_types, vector<string> &names);
+                                                  vector<LogicalType> &return_types, vector<string> &names);
 
 void ExampleTableFunction(ClientContext &context, TableFunctionInput &data_p, DataChunk &output);
 

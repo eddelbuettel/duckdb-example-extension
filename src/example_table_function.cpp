@@ -8,7 +8,7 @@ static bool verbose = false;
 // (Sample) Table code below -- for sample export of 5 columns with one simple scalar as param
 
 unique_ptr<FunctionData> ExampleTableBindFunction(ClientContext &context, TableFunctionBindInput &input,
-												  vector<LogicalType> &return_types, vector<string> &names) {
+                                                  vector<LogicalType> &return_types, vector<string> &names) {
 
 	auto resdata = make_uniq<ExampleTableData>(); // 'resdata' for result data i.e. outgoing
 
@@ -21,8 +21,8 @@ unique_ptr<FunctionData> ExampleTableBindFunction(ClientContext &context, TableF
 		std::cout << "  setting value=" << resdata->value << std::endl;
 
 	names = {"col_1", "col_2", "col_3", "col_4", "col_5"};
-	return_types = {LogicalType::SMALLINT, LogicalType::INTEGER, LogicalType::BIGINT,
-					LogicalType::FLOAT, LogicalType::DOUBLE};
+	return_types = {LogicalType::SMALLINT, LogicalType::INTEGER, LogicalType::BIGINT, LogicalType::FLOAT,
+	                LogicalType::DOUBLE};
 
 	return std::move(resdata);
 }
