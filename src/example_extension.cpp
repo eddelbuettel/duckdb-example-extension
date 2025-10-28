@@ -1,6 +1,7 @@
 #define DUCKDB_EXTENSION_MAIN
 
 #include "example_extension.hpp"
+#include "example_table_function.hpp"
 #include "duckdb.hpp"
 #include "duckdb/common/exception.hpp"
 #include "duckdb/function/scalar_function.hpp"
@@ -36,6 +37,10 @@ static void LoadInternal(ExtensionLoader &loader) {
 	auto example_openssl_version_scalar_function = ScalarFunction("example_openssl_version", {LogicalType::VARCHAR},
 	                                                              LogicalType::VARCHAR, ExampleOpenSSLVersionScalarFun);
 	loader.RegisterFunction(example_openssl_version_scalar_function);
+
+	// Register sample table function returning a table (and consuming a scalar (or two, commented out)
+	auto example_table_function = TableFunction("example_table_function", {LogicalType::INTEGER}, ExampleTableFunction, ExampleTableBindFunction);
+	loader.RegisterFunction(example_table_function);
 }
 
 void ExampleExtension::Load(ExtensionLoader &loader) {
